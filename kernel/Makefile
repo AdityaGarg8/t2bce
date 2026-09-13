@@ -4,3 +4,4 @@ obj-$(CONFIG_T2BCE_CORE) += t2bce_core/
 obj-$(CONFIG_T2BCE_VHCI) += t2bce_vhci/
 obj-$(CONFIG_T2BCE_AUDIO) += t2bce_audio/
 obj-$(CONFIG_T2BCE_AVE) += t2bce_ave/
+obj-$(CONFIG_T2SEP) += t2sep/

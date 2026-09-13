@@ -47,4 +47,12 @@ config T2BCE_AVE
 
 	  If compiled as a module, it will be called t2bce_ave.
 
+config T2SEP
+	tristate "Apple T2 Secure Enclave Processor support"
+	help
+	  Driver to support T2 Secure Enclave Processor, for Touch ID
+	  support.
+
+	  If compiled as a module, it will be called t2sep.
+
 endmenu
