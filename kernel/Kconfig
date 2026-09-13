@@ -41,7 +41,7 @@ config T2BCE_AVE
 	tristate "Apple T2 audio video encoder support"
 	depends on T2BCE_CORE
 	depends on VIDEO_DEV
-	depends on V4L2_MEM2MEM_DEV
+	select V4L2_MEM2MEM_DEV
 	help
 	  Driver to support audio and video encoder present on the T2 Chip.
 
