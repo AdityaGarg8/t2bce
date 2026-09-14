@@ -19,7 +19,7 @@ jobs:
         id: publish
         run: |
           git clone https://github.com/kaiT2en/KaiT2en-Fedora
-          for i in t2bce_audio-alsa-ucm-conf t2bce_audio t2bce_ave t2bce_core t2bce_dma t2bce_vhci t2sep
+          for i in t2bce_audio-alsa-ucm-conf t2bce_audio t2bce_ave t2bce_core t2bce_dma t2bce_vhci
           do
           rm -rf "$i"
           cp -r ./KaiT2en-Fedora/modules/"$i" ./
