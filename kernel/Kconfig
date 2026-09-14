@@ -43,7 +43,6 @@ config T2BCE_AVE
 	depends on MEDIA_SUPPORT && I2C
 	depends on VIDEO_DEV
 	select V4L2_MEM2MEM_DEV
-	select VIDEOBUF2_V4L2
 	select VIDEOBUF2_CORE
 	help
 	  Driver to support audio and video encoder present on the T2 Chip.
