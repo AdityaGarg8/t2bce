@@ -44,6 +44,7 @@ config T2BCE_AVE
 	depends on VIDEO_DEV
 	select V4L2_MEM2MEM_DEV
 	select VIDEOBUF2_CORE
+	select VIDEOBUF2_VMALLOC
 	help
 	  Driver to support audio and video encoder present on the T2 Chip.
 
