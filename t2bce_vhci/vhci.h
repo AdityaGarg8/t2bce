@@ -41,6 +41,8 @@ struct bce_vhci {
     struct work_struct w_add_hcd;
     unsigned long port_change_pending;
     bool no_state_resume;
+    /* Ports whose device must be reset-resumed after a stateful resume. */
+    unsigned long stateful_reset_ports;
     bool hcd_registered;
     bool system_suspending;
 };

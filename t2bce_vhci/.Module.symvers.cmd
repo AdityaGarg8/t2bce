@@ -1,0 +1,1 @@
+savedcmd_Module.symvers :=  /usr/lib/modules/7.1.8-arch1-Watanare-T2-3-t2/build/scripts/mod/modpost -M    -a    -N  -o Module.symvers -n -T modules.order -i /usr/lib/modules/7.1.8-arch1-Watanare-T2-3-t2/build/Module.symvers -e -i /tmp/claude-1000/-home-toni-Projects-t2touch/7c10f8de-09f3-409c-8081-7a24e51eba7f/scratchpad/ag/t2bce_core/Module.symvers
