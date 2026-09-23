@@ -3,7 +3,10 @@ obj-m += $(modname).o
 
 t2bce_ave-objs := ave.o protocol.o encoder.o video.o
 
-T2BCE_CORE_SRC ?= ../t2bce_core
+# The DKMS stack stages both modules side by side; standalone repository builds
+# use the common core at its repository location.
+T2BCE_AVE_DIR := $(if $(src),$(abspath $(src)),$(CURDIR))
+T2BCE_CORE_SRC ?= $(if $(wildcard $(T2BCE_AVE_DIR)/../t2bce_core),../t2bce_core,../../../../modules/t2bce_core)
 MY_CFLAGS += -DWITHOUT_NVME_PATCH
 ccflags-y += ${MY_CFLAGS}
 ccflags-y += -I$(src) -I$(src)/$(T2BCE_CORE_SRC)/include
@@ -17,7 +20,7 @@ endif
 KDIR := /lib/modules/$(KVERSION)/build
 MODDEST ?= /lib/modules/$(KVERSION)/updates
 PWD := $(shell pwd)
-T2BCE_CORE_SYMBOLS := $(abspath $(PWD)/$(T2BCE_CORE_SRC)/Module.symvers)
+T2BCE_CORE_SYMBOLS := $(abspath $(T2BCE_AVE_DIR)/$(T2BCE_CORE_SRC)/Module.symvers)
 
 ifneq ($(wildcard $(T2BCE_CORE_SYMBOLS)),)
 KBUILD_EXTRA_SYMBOLS += $(T2BCE_CORE_SYMBOLS)
