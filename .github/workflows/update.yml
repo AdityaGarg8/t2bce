@@ -22,7 +22,7 @@ jobs:
           for i in t2bce_audio-alsa-ucm-conf t2bce_audio t2bce_ave t2bce_core t2bce_dma t2bce_vhci
           do
           rm -rf "$i"
-          cp -r ./KaiT2en-Fedora/modules/"$i" ./
+          cp -r ./KaiT2en-Fedora/modules/"$i" ./ || cp -r ./KaiT2en-Fedora/t2-services/t2-ave/kernel/"$i" ./
           done
           rm -rf KaiT2en-Fedora
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
