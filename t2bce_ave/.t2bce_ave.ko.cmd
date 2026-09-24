@@ -1,0 +1,1 @@
+savedcmd_t2bce_ave.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T /usr/lib/modules/7.1.8-arch1-Watanare-T2-3-t2/build/scripts/module.lds -o t2bce_ave.ko t2bce_ave.o t2bce_ave.mod.o .module-common.o
