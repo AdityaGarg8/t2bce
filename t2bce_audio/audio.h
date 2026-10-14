@@ -125,6 +125,7 @@ struct t2audio_device {
     void __iomem *reg_mem_bs;
     dma_addr_t reg_mem_bs_dma;
     void __iomem *reg_mem_cfg;
+    bool bs_wc;
 
     u32 __iomem *reg_mem_gpr;
 
@@ -142,6 +143,7 @@ struct t2audio_device {
     struct completion remote_alive;
     struct work_struct resume_work;
     struct workqueue_struct *pcm_io_wq;
+    struct workqueue_struct *msg_wq;
     bool resume_deferred;
     bool pm_quiesced;
 
