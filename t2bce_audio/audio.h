@@ -91,6 +91,7 @@ struct t2audio_stream {
     u64 last_received_ns;
     u64 anchor_ns;
     u64 sample_frames;
+    u64 sample_base;
     u64 reported_frames;
     u64 sample_period;
     bool timeline_fault;
@@ -112,6 +113,7 @@ struct t2audio_subdevice {
     struct list_head list;
     t2audio_device_id_t dev_id;
     u32 in_latency, out_latency;
+    u32 in_safety_offset, out_safety_offset;
     u8 buf_id;
     int alsa_id;
     char uid[T2AUDIO_DEVICE_MAX_UID_LEN + 1];
