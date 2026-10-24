@@ -203,6 +203,14 @@ static void t2audio_handle_reply(struct t2audio_bce *b, struct t2audio_msg *repl
         pr_err("t2bce_audio: reply tag parse failed: %.4s\n", tag);
         return;
     }
+    /*
+     * kstrtoint() also accepts a leading '-'/'+' and spaces, so a tag of
+     * "S-01" parses to -1. Reject anything outside the table before indexing.
+     */
+    if (tagn < 0 || tagn >= T2AUDIO_BCE_QUEUE_TAG_COUNT) {
+        pr_err("t2bce_audio: reply tag out of range: %.4s\n", tag);
+        return;
+    }
 
     spin_lock_irqsave(&b->spinlock, irq_flags);
     entry = b->pending_entries[tagn];
@@ -256,7 +264,8 @@ static void t2audio_bce_in_queue_completion(struct t2bce_core_queue_sq *sq)
     mb();
     while ((c = t2bce_core_next_completion(sq))) {
         msg.data = (u8 *) q->data + q->data_head * q->el_size;
-        msg.size = c->data_size;
+        /* The device supplies this; never let it escape the ring element. */
+        msg.size = min_t(size_t, c->data_size, q->el_size);
         msg.received_ns = ktime_get_raw_ns();
 #ifdef DEBUG
         pr_debug("t2bce_audio: Received command data %llx\n", c->data_size);
